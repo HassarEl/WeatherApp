@@ -1,4 +1,10 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
+import java.io.File;
+import java.io.IOException;
 
 public class WeatherAppGui extends JFrame {
     public WeatherAppGui(){
@@ -19,5 +25,43 @@ public class WeatherAppGui extends JFrame {
 
         // prevent ony resize og our gui
         setResizable(false);
+
+        addGuiComponents();
+    }
+
+    private void addGuiComponents(){
+        //search field
+        JTextField searchTextField = new JTextField();
+
+        // set the location and size of our component
+        searchTextField.setBounds(15, 15, 351, 45);
+
+        // change the font style and size
+        searchTextField.setFont(new Font("Dialog", Font.PLAIN, 24));
+
+        add(searchTextField);
+
+        // search Button
+        JButton searchButton = new JButton(loadImage("src/assets/search.png"));
+
+        //change the cursor to a hand cursor when hovering over this button
+        searchButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        searchButton.setBounds(375, 13, 47, 45);
+        add(searchButton);
+
+    }
+
+    private ImageIcon loadImage(String resourcePath){
+        try{
+            // read the image file from the path given
+            BufferedImage image = ImageIO.read(new File(resourcePath));
+
+            // returns on image icon so that our component can render it
+            return new ImageIcon(image);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        System.out.println("could not find resource");
+        return null;
     }
 }
