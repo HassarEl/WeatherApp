@@ -49,6 +49,30 @@ public class WeatherAppGui extends JFrame {
         searchButton.setBounds(375, 13, 47, 45);
         add(searchButton);
 
+        // Weather Image
+        JLabel weatherCnditionImage = new JLabel(loadImage("src/assets/cloudy.png"));
+        weatherCnditionImage.setBounds(0, 125, 450, 217);
+        add(weatherCnditionImage);
+
+        // Temperature text
+        JLabel temperatureText = new JLabel("10° C");
+        temperatureText.setBounds(0, 350, 450, 54);
+        temperatureText.setFont(new Font("Dialog", Font.BOLD, 48));
+
+        // center the text
+        temperatureText.setHorizontalAlignment(SwingConstants.CENTER);
+        add(temperatureText);
+
+        // weather condition description
+        JLabel weatherConditionDesc = new JLabel("Cloudy");
+        weatherConditionDesc.setBounds(0, 405, 450, 36);
+        weatherConditionDesc.setFont(new Font("Dialog", Font.PLAIN, 32));
+        // center the Text
+        weatherConditionDesc.setHorizontalAlignment(SwingConstants.CENTER);
+        add(weatherConditionDesc);
+
+
+
     }
 
     private ImageIcon loadImage(String resourcePath){
